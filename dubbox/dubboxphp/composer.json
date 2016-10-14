@@ -1,0 +1,26 @@
+{
+    "name": "max/dubboxphp",
+    "description": "php http client library for get/post from dubbox service",
+    "type": "library",
+    "require": {
+		 "php": ">=5.3",
+        "ext-curl": "*",
+        "nategood/httpful": "*",      
+        "guzzlehttp/guzzle": "~6.0"
+    },
+    "authors": [
+        {
+            "name": "max",
+            "email": "maxkerrer@126.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "dubboxphp\\": "src/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*"
+    }
+}
