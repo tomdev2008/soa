@@ -28,9 +28,9 @@
 	</properties>
 	<dependencies>
 		<dependency>
-			<groupId>com.max.soa.api</groupId>
-			<artifactId>dubbo-services</artifactId>
-			<version>${api.services}</version>
+			<groupId>com.max.api</groupId>
+			<artifactId>soa-provider-api</artifactId>
+			<version>${api.provider.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.alibaba</groupId>
