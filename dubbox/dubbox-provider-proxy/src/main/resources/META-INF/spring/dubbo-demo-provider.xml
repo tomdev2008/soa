@@ -84,14 +84,17 @@
     </bean>
     
     <!-- test for mys -->
-    <dubbo:service interface=" com.max.proxy.api.services.ProxyBranchCompanyService" ref="proxyBraComService"  protocol="rest" />
-    <bean id="proxyBraComService" class="com.max.proxy.api.services.impl.BranchCompanySerImpl" />
+    <dubbo:reference id="branService" interface="com.max.soa.api.services.BranchCompanyService"  protocol="dubbo" />
+    <bean id="proxyBraComService" class="com.max.proxy.api.services.impl.BranchCompanySerImpl" >
+       <property name="branService" ref="branService" />
+    </bean>    
+    <dubbo:service interface="com.max.proxy.api.services.ProxyBranchCompanyService" ref="proxyBraComService"  protocol="rest" />
+    
     
     <dubbo:reference id="demoService" interface="com.max.soa.api.services.DemoService"  protocol="dubbo" />
     <bean id="proxydemoService" class="com.max.proxy.api.services.impl.DemoServiceImpl" >
        <property name="demoService" ref="demoService" />
     </bean>
-
     <dubbo:service interface=" com.max.proxy.api.services.ProxyDemoService" ref="proxydemoService"  protocol="rest" />
    
    <!-- end of test for mys -->

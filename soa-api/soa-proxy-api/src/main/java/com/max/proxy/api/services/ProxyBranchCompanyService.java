@@ -1,11 +1,10 @@
 package com.max.proxy.api.services;
 
 
-import java.util.List;
-
+import com.max.soa.api.domain.BranchCompany;
 
    
 public interface ProxyBranchCompanyService {  
-	String sayHello(String name);
+	BranchCompany getLast();
   
 }  

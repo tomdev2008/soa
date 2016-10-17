@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
 
 import com.alibaba.dubbo.rpc.RpcContext;
 import com.max.proxy.api.services.ProxyBranchCompanyService;
-
+import com.max.soa.api.domain.BranchCompany;
+import com.max.soa.api.services.BranchCompanyService;
+import com.max.soa.api.services.DemoService;
 import com.alibaba.dubbo.rpc.RpcContext;
 import com.alibaba.dubbo.rpc.protocol.rest.support.ContentType;
 
@@ -27,14 +29,18 @@ import javax.ws.rs.core.MediaType;
 @Consumes({MediaType.APPLICATION_JSON, MediaType.TEXT_XML})
 @Produces({ContentType.APPLICATION_JSON_UTF_8, ContentType.TEXT_XML_UTF_8})
 public class BranchCompanySerImpl implements ProxyBranchCompanyService {
+	
+	private BranchCompanyService branService;
 
+	public void setBranService(BranchCompanyService branService) {
+		this.branService = branService;
+	}
+	
 	@Override
 	@GET
-	@Path("{name}")
-	public String sayHello(@PathParam("name") String name) {
-		System.out.println("[" + new SimpleDateFormat("HH:mm:ss").format(new Date()) + "] Hello " + name
-				+ ", request from consumer: " + RpcContext.getContext().getRemoteAddress());
-		return "Hello " + name + ", response form provider: " + RpcContext.getContext().getLocalAddress();
+	public BranchCompany getLast() {
+		List<BranchCompany> lbrans = (List<BranchCompany>) branService.getBranchCompanys();
+		BranchCompany fbran = (BranchCompany) lbrans.get(lbrans.size() - 1);
+		return fbran;
 	}
-
 }
