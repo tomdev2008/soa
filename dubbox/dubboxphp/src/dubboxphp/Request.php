@@ -99,12 +99,23 @@ class Request
     }
     
     public static function get($uri,$array=true,$httpClient="http"){  
-		echo Http::GET;
        if($httpClient  == "http"){
 		  return self::init(Http::GET)->uri($uri)->resultFormat($array)->_HttpGet();
 	   }else if($httpClient  == "guzzle"){
 		  return self::init(Http::GET)->uri($uri)->resultFormat($array)->_GuzzleGet();
 	   }        
+	}
+	
+	public static function post($uri,$payload){  
+		return self::init(Http::POST)->uri($uri)->body($payload, "application/json")->_httpPost();
+		       
+	}
+	
+	private function _httpPost(){		
+		return $response = \Httpful\Request::post($this->uri)     // Build a PUT request...
+                          ->sendsJson()                     // tell it we're sending (Content-Type) JSON... // authenticate with basic auth...
+                          ->body(json_encode($this->payload))        // attach a body/payload...
+                          ->send();
 	}
 	
 	private  function _HttpGet(){
@@ -138,9 +149,6 @@ class Request
         return self::init(Http::POST)->uri($uri)->body($payload, $mime);
     }
     
-	public static function post(){
-		
-	}
 	
 	/**
      * HTTP Method Get

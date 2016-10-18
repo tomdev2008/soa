@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-       Copyright 2010-2016 the original author or authors.
-       Licensed under the Apache License, Version 2.0 (the "License");
-       you may not use this file except in compliance with the License.
-       You may obtain a copy of the License at
-          http://www.apache.org/licenses/LICENSE-2.0
-       Unless required by applicable law or agreed to in writing, software
-       distributed under the License is distributed on an "AS IS" BASIS,
-       WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-       See the License for the specific language governing permissions and
-       limitations under the License.
--->
+<!-- Copyright 2010-2016 the original author or authors. Licensed under the 
+	Apache License, Version 2.0 (the "License"); you may not use this file except 
+	in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 
+	Unless required by applicable law or agreed to in writing, software distributed 
+	under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES 
+	OR CONDITIONS OF ANY KIND, either express or implied. See the License for 
+	the specific language governing permissions and limitations under the License. -->
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.max.soa.mapper.BranchCompanyMapper">
@@ -31,10 +26,13 @@
 		<property name="memoryStoreEvictionPolicy" value="LRU" />
 	</cache>
 
-	<insert id="insertBranchCompany" parameterType="com.max.soa.api.domain.BranchCompany" useGeneratedKeys="true" keyProperty="id" flushCache="true">
-		insert into BranchCompany (
+	<insert id="insertBranchCompany" parameterType="com.max.soa.api.domain.BranchCompany"
+		useGeneratedKeys="true" keyProperty="id" flushCache="true">
+		insert into
+		BranchCompany (
 		id,name,address,telNumber,moduleNo,labId,remark)
-		values (
+		values
+		(
 		#{id},
 		#{name},
 		#{address},
@@ -46,6 +44,34 @@
 	</insert>
 
 	<select id="getBraComsFromDataBase" resultType="com.max.soa.api.domain.BranchCompany">
-		select * from BranchCompany
+		select * from
+		BranchCompany
 	</select>
+
+	<select id="selectBranchCompany" parameterType="int"
+		resultType="com.max.soa.api.domain.BranchCompany">
+		select * from BranchCompany WHERE id = #{id}
+	</select>
+
+	<update id="updateBranchCompany" parameterType="com.max.soa.api.domain.BranchCompany"
+		flushCache="true" statementType="PREPARED" timeout="20">
+		update
+		BranchCompany set
+		name = #{name},
+		address = #{address},
+		telNumber =
+		#{telNumber},
+		moduleNo = #{moduleNo},
+		labId = #{labId},
+		remark =
+		#{remark}
+		where id = #{id}
+	</update>
+
+	<delete id="deleteBranchCompany" parameterType="com.max.soa.api.domain.BranchCompany"
+		flushCache="true" statementType="PREPARED" timeout="20">
+		delete from
+		BranchCompany
+		where id = #{id}
+	</delete>
 </mapper> 
