@@ -2,6 +2,8 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
+require "config.php";
+
 $php_version = phpversion();
 $php_major = floatval(substr($php_version, 0, 3));
 /**

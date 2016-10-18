@@ -1,6 +1,6 @@
-<phpunit bootstrap="./bootstrap-server.php">
+<phpunit bootstrap="./bootstrap.php">
     <testsuites>
-        <testsuite name="Httpful">
+        <testsuite name="restful">
             <directory>.</directory>
         </testsuite>
     </testsuites>
