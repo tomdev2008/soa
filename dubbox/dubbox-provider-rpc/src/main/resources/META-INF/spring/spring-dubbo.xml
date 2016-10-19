@@ -85,6 +85,6 @@
         <property name="userService" ref="userService"/>
     </bean>
     -->
-    <dubbo:service interface="com.max.soa.api.services.DemoService"	ref="demoService" protocol="dubbo" />
-	<dubbo:service interface="com.max.soa.api.services.BranchCompanyService" ref="braComService" protocol="dubbo" />
+    <dubbo:service interface="com.ttfc.soa.dubbo.provider.service.DemoService"	ref="demoService" protocol="dubbo" />
+	<dubbo:service interface="com.ttfc.soa.dubbo.provider.service.BranchCompanyService" ref="braComService" protocol="dubbo" />
 </beans>

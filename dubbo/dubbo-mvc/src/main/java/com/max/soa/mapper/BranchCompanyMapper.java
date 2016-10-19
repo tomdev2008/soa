@@ -3,7 +3,7 @@ package com.max.soa.mapper;
 
 import java.util.List;
 
-import com.max.soa.api.domain.BranchCompany;  
+import com.ttfc.soa.dubbo.provider.domain.BranchCompany;  
    
 public interface BranchCompanyMapper {  
     

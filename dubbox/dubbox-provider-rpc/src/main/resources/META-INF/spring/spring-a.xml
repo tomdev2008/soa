@@ -15,8 +15,8 @@
        http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 	<aop:aspectj-autoproxy />
 	<!-- 自动扫描含有@Service将其注入为bean -->
-	<context:component-scan base-package="com.max.soa.api.services" />
-	<context:component-scan base-package="com.max.soa.services.impl" />
+	<context:component-scan base-package="com.ttfc.soa.dubbo.provider.service" />
+	<context:component-scan base-package="com.ttfc.soa.dubbo.provider.service.impl" />
 	<!-- <import resource="spring-mvc.xml"/> <import resource="spring-mybatis.xml"/> -->
 	<context:annotation-config />
 	<!--引入配置属性文件 -->

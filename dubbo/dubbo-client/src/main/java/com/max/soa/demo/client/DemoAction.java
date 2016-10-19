@@ -22,7 +22,7 @@ import java.util.Random;
 import java.util.UUID;
 
 import com.max.soa.api.services.DemoService;
-import com.max.soa.api.domain.BranchCompany;
+import com.ttfc.soa.dubbo.provider.domain.BranchCompany;
 import com.max.soa.api.services.BranchCompanyService;
 
 public class DemoAction {

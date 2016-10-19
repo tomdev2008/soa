@@ -1,8 +1,8 @@
 package com.max.soa.services.impl;
 
-import com.max.soa.api.domain.BranchCompany;
 import com.max.soa.api.services.BranchCompanyService;
 import com.max.soa.mapper.BranchCompanyMapper;
+import com.ttfc.soa.dubbo.provider.domain.BranchCompany;
 
 import java.util.List;  
    

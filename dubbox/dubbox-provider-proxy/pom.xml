@@ -20,6 +20,7 @@
 	<description>The demo provider module of dubbo project</description>
 	<properties>
 		<skip_maven_deploy>false</skip_maven_deploy>
+		 <shiro.version>1.3.2</shiro.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -194,11 +195,23 @@
 			<groupId>de.ruedigermoeller</groupId>
 			<artifactId>fst</artifactId>
 		</dependency>
+		<!-- mys  -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
 			<version>3.5</version>
 		</dependency>
+		<!-- Shiro dependencies: -->
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-core</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-web</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
 	</dependencies>
 	<!--<build> -->
 	<!--<plugins> -->
