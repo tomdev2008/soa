@@ -29,11 +29,6 @@
 			<version>${api.provider.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>com.max.api</groupId>
-			<artifactId>soa-proxy-api</artifactId>
-			<version>${api.proxy.version}</version>
-		</dependency>
-		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>dubbo</artifactId>
 			<version>${dubbo.version}</version>

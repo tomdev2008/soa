@@ -27,14 +27,13 @@
     <description>The demo consumer module of dubbo project</description>
     <properties>
         <skip_maven_deploy>false</skip_maven_deploy>
-        <api.proxy.version>1.0.0-SNAPSHOT</api.proxy.version>
     </properties>
     <dependencies>
         <dependency>
-            <groupId>com.max.api</groupId>
-            <artifactId>soa-proxy-api</artifactId>
-            <version>${api.proxy.version}</version>
-        </dependency>
+			<groupId>com.max.api</groupId>
+			<artifactId>soa-provider-api</artifactId>
+			<version>${api.provider.version}</version>
+		</dependency>
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>dubbo</artifactId>

@@ -30,6 +30,5 @@
 	</properties>
 	<modules>
 		<module>soa-provider-api</module>
-		<module>soa-proxy-api</module>
 	</modules>
 </project>

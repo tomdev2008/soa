@@ -41,7 +41,6 @@
 	</organization>
 	<modules>
 		<module>dubbo-provider</module>
-		<module>dubbo-mvc</module>
 		<module>dubbo-client</module>		
 	</modules>
 	<profiles>

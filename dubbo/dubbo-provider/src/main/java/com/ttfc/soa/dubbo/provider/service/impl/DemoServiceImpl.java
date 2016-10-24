@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.max.soa.services.impl;
+package com.ttfc.soa.dubbo.provider.service.impl;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -21,7 +21,8 @@ import java.util.Date;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.dubbo.rpc.RpcContext;
-import com.max.soa.api.services.DemoService;
+import com.ttfc.soa.dubbo.provider.service.DemoService;
+
 
 @Service("demoService")
 public class DemoServiceImpl implements DemoService {

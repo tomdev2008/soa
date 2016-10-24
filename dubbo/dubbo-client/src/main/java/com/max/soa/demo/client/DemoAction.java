@@ -21,9 +21,11 @@ import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
-import com.max.soa.api.services.DemoService;
+
 import com.ttfc.soa.dubbo.provider.domain.BranchCompany;
-import com.max.soa.api.services.BranchCompanyService;
+import com.ttfc.soa.dubbo.provider.service.BranchCompanyService;
+import com.ttfc.soa.dubbo.provider.service.DemoService;
+
 
 public class DemoAction {
 
