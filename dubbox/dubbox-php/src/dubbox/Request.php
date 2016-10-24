@@ -1,6 +1,6 @@
 <?php
 
-namespace dubboxphp;
+namespace dubbox;
 
 
 /**
@@ -98,7 +98,8 @@ class Request
         self::$_template = clone $template;
     }
     
-    public static function get($uri,$array=true,$httpClient="http"){  
+    public static function get($name,$params=array(),$array=true,$httpClient="http"){  
+	   $uri = Config::getServer($name,$params);
        if($httpClient  == "http"){
 		  return self::init(Http::GET)->uri($uri)->resultFormat($array)->_HttpGet();
 	   }else if($httpClient  == "guzzle"){
@@ -106,7 +107,8 @@ class Request
 	   }        
 	}
 	
-	public static function post($uri,$payload){  
+	public static function post($name,$payload){  
+		$uri = Config::getServer($name);
 		return self::init(Http::POST)->uri($uri)->body($payload, "application/json")->_httpPost();
 		       
 	}

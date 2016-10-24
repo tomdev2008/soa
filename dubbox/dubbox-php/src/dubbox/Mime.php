@@ -1,6 +1,6 @@
 <?php
 
-namespace dubboxphp;
+namespace dubbox;
 
 /**
  * Class to organize the Mime stuff a bit more

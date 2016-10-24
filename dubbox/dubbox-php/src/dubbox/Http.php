@@ -1,6 +1,6 @@
 <?php
 
-namespace dubboxphp;
+namespace dubbox;
 
 /**
  * @author Nate Good <me@nategood.com>
