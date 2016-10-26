@@ -1,0 +1,24 @@
+dubbx php 客户端使用：
+
+1. 集成dubbox-php到系统库文件
+   1). 安装库文件
+       将dubbox-php文件拷贝到/core/framework, 并更改dubbox-php为dubbox
+   2). 加载库文件
+       /shopnc.php中增加require_once(BASE_CORE_PATH.'/framework/dubbox/bootstrap.php');
+2. 使用
+   1). get 主要用于查询,如批量查询或者单一查询，返回值为数组
+       $result = \dubbo\Request::get("Order.Hello");  //无参数， “Order.Hello”为预定义标签，标签代表请求服务的名称（详见Config.php）,(下同)
+       $result = \dubbox\Request::get("Order.Brand.ID".array("id"=>4));  //有参数
+        
+   2). post 主要用于数据的insert,update,delete，返回值为数组
+       //插入一条数据
+       $brand = array(
+			"name"=> "haiphp",
+			"labId" => $labid,
+			"address" => "SSdsg",
+			"moduleNo" => "SSS2000",
+			"telNumber" => "125604",
+			"remark"    => $uuid
+	   );
+      $result = \dubbox\Request::post("Order.Insert",$brand);
+     
