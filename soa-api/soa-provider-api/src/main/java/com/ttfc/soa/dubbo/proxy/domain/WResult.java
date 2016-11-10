@@ -22,10 +22,10 @@ public class WResult  implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 
-	@JsonProperty("code")
-    @XmlElement(name = "code")
+	@JsonProperty("status")
+    @XmlElement(name = "status")
     @NotNull
-    private int code;
+    private int status;
 
 	@JsonProperty("istrue")
     @XmlElement(name = "istrue")
@@ -48,19 +48,11 @@ public class WResult  implements Serializable {
     @Override
     public String toString() {
         return "response code:" +
-                "code=" + getCode() +
+                "status=" + getStatus() +
                 ", msg='" + getMsg() + "'";
     }
 
 
-	public int getCode() {
-		return code;
-	}
-
-
-	public void setCode(int code) {
-		this.code = code;
-	}
 
 
 	public boolean isIstrue() {
@@ -91,5 +83,15 @@ public class WResult  implements Serializable {
 
 	public void setEntity(Object entity) {
 		this.entity = entity;
+	}
+
+
+	public int getStatus() {
+		return status;
+	}
+
+
+	public void setStatus(int status) {
+		this.status = status;
 	}
 }

@@ -47,7 +47,7 @@ public class WResponse{
 	public static WResponse success(Action action){
 		WResult result = new WResult();
 		result.setIstrue(true);
-		result.setCode(action.getStatusCode());
+		result.setStatus(action.getStatusCode());
 		result.setMsg(action.getReasonPhrase());
 		WResponse res = new WResponse(result);	
 		
@@ -57,7 +57,7 @@ public class WResponse{
 	public static WResponse fail(Action action){
 		WResult result = new WResult();
 		result.setIstrue(false);
-		result.setCode(action.getStatusCode());
+		result.setStatus(action.getStatusCode());
 		WResponse res = new WResponse(result);	
 		
 		return res;
