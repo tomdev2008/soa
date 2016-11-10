@@ -15,9 +15,6 @@
  */
 package com.ttfc.soa.dubbo.proxy.service.impl;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -28,10 +25,10 @@ import javax.ws.rs.core.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.alibaba.dubbo.rpc.RpcContext;
 import com.alibaba.dubbo.rpc.protocol.rest.support.ContentType;
 import com.ttfc.soa.dubbo.provider.service.DemoService;
-import com.ttfc.soa.dubbo.proxy.domain.Hello;
+import com.ttfc.soa.dubbo.proxy.domain.WResponse;
+import com.ttfc.soa.dubbo.proxy.domain.WResult;
 import com.ttfc.soa.dubbo.proxy.service.DemoServiceProxy;
 
 
@@ -51,9 +48,11 @@ public class DemoServiceImplProxy implements DemoServiceProxy {
 	@Override
 	@GET
 	@Path("{name}")
-	public Hello getHello(@PathParam("name") String name) {
+	public WResult getHello(@PathParam("name") String name) {
 		String result = demoService.sayHello(name);
-		return new Hello("ok", result);
+        
+		return WResponse.success(WResponse.Action.ACCEPTED).entity(result).build();
+		//return WResponse.fail(WResponse.Action.BAD_REQUEST).msg("erro happend").build();
 	}
 
 }

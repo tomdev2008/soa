@@ -19,6 +19,8 @@ import com.alibaba.dubbo.rpc.RpcContext;
 import com.alibaba.dubbo.rpc.protocol.rest.support.ContentType;
 import com.ttfc.soa.dubbo.provider.domain.BranchCompany;
 import com.ttfc.soa.dubbo.provider.service.BranchCompanyService;
+import com.ttfc.soa.dubbo.proxy.domain.WResponse;
+import com.ttfc.soa.dubbo.proxy.domain.WResult;
 import com.ttfc.soa.dubbo.proxy.service.BranchCompanyServiceProxy;
 
 import javax.servlet.http.HttpServletRequest;
@@ -46,33 +48,33 @@ public class BranchCompanySerImplProxy implements BranchCompanyServiceProxy {
 
 	@Override
 	@GET
-	public BranchCompany getLast() {
+	public WResult getLast() {
 		List<BranchCompany> lbrans = (List<BranchCompany>) branService.getBranchCompanys();
-		BranchCompany fbran = (BranchCompany) lbrans.get(lbrans.size() - 1);
-		return fbran;
+		
+		return WResponse.success(WResponse.Action.ACCEPTED).entity(lbrans).build();
 	}
 
 	@Override
 	@GET
 	@Path("{id : \\d+}")
-	public BranchCompany getBranchCompany(
+	public WResult getBranchCompany(
 			@PathParam("id") int id/* , @Context HttpServletRequest request */) {
 		BranchCompany fbran = (BranchCompany) branService.getBranchCompanyById(id);
-		return fbran;
+		return WResponse.success(WResponse.Action.ACCEPTED).entity(fbran).build();
 	}
 
 	@Override
 	@POST
 	@Path("register")
-	public RegistrationResult registerBranchCompany(BranchCompany brand) {
+	public WResult registerBranchCompany(BranchCompany brand) {
 		int res = branService.saveBranchCompany(brand);		
-		return new RegistrationResult(Long.valueOf(res));
+		return WResponse.success(WResponse.Action.ACCEPTED).entity(Long.valueOf(res)).build();
 	}
 
 	@Override
 	@POST
 	@Path("update")
-	public RegistrationResult updateBranchCompany(HashMap<String, String> data) {
+	public WResult updateBranchCompany(HashMap<String, String> data) {
 		int id = Integer.valueOf(data.get("id"));
 		BranchCompany brandduty = (BranchCompany) branService.getBranchCompanyById(id);		
 		
@@ -102,17 +104,17 @@ public class BranchCompanySerImplProxy implements BranchCompanyServiceProxy {
 
 	
 		int res = branService.updateBranchCompany(brandduty);
-		return new RegistrationResult(Long.valueOf(res));
+		return WResponse.success(WResponse.Action.ACCEPTED).entity(Long.valueOf(res)).build();
 	}
 
 	@Override
 	@POST
 	@Path("delete")
-	public RegistrationResult deleteBranchCompany(HashMap<String, String> data) {
+	public WResult deleteBranchCompany(HashMap<String, String> data) {
 		int id = Integer.valueOf(data.get("id"));
 		BranchCompany brand = branService.getBranchCompanyById(id);
 		int res = branService.deleteBranchCompany(brand);
-		return new RegistrationResult(Long.valueOf(res));
+		return WResponse.success(WResponse.Action.ACCEPTED).entity(Long.valueOf(res)).build();
 	}
 
 }

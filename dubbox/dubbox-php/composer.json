@@ -1,5 +1,5 @@
 {
-    "name": "max/dubboxphp",
+    "name": "max/dubbox",
     "description": "php http client library for get/post from dubbox service",
     "type": "library",
     "require": {
@@ -17,7 +17,8 @@
     "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
-            "dubboxphp\\": "src/"
+            "dubbox\\": "src/dubbox",
+            "WFFile\\": "src/wffile"
         }
     },
     "require-dev": {

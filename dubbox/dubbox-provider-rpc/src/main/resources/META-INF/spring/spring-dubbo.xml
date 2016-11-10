@@ -31,6 +31,8 @@
     <!--<dubbo:annotation package="com.alibaba.dubbo.demo.user.facade" /> -->
 
     <dubbo:protocol name="dubbo" serialization="kryo" port="20880" optimizer="com.alibaba.dubbo.demo.SerializationOptimizerImpl"/>
+ <!--    <dubbo:provider filter="AuthorityFilter" />  --> 
+    
     <!--<dubbo:protocol name="dubbo" serialization="fst" optimizer="com.alibaba.dubbo.demo.SerializationOptimizerImpl"/>-->
 
     <!--<dubbo:protocol name="dubbo" serialization="nativejava"/>-->

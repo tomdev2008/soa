@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:sec="http://www.springframework.org/schema/security"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans   
+ 		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd   
+ 		http://www.springframework.org/schema/security  
+ 		http://www.springframework.org/schema/security/spring-security-3.2.xsd
+ 		http://www.springframework.org/schema/context  
+    	http://www.springframework.org/schema/context/spring-context-3.2.xsd ">
+
+
+	<!-- <beans:bean id="digestFilter"> <beans:property name="userDetailsService" 
+		ref="userService" /> <beans:property name="authenticationEntryPoint" ref="digestEntryPoint" 
+		/> </beans:bean> <beans:bean id="digestEntryPoint"> <beans:property name="realmName" 
+		value="Contacts Realm via Digest Authentication" /> <beans:property name="key" 
+		value="acegi" /> </beans:bean> the security namespace configuration <http 
+		use-expressions="true" entry-point-ref="digestEntryPoint"> <intercept-url 
+		pattern="/**" access="isAuthenticated()" /> <custom-filter ref="digestFilter" 
+		after="BASIC_AUTH_FILTER" /> </http> <authentication-manager> <authentication-provider> 
+		<user-service id="userService"> <user name="user1" password="user1Pass" authorities="ROLE_USER" 
+		/> </user-service> </authentication-provider> </authentication-manager> -->
+
+	<context:component-scan base-package="com.ttfc.soa.dubbo.proxy.service.impl" />
+	<http create-session="stateless" entry-point-ref="digestEntryPoint">
+		<intercept-url pattern="/services/**" access="ROLE_ADMIN" />
+
+		<http-basic />
+		<custom-filter ref="digestFilter" after="BASIC_AUTH_FILTER" />
+	</http>
+
+	<bean id="basicAuthenticationFilter"
+		class="org.springframework.security.web.authentication.www.BasicAuthenticationFilter">
+		<property name="authenticationManager" ref="authenticationManager" />
+		<property name="authenticationEntryPoint" ref="authenticationEntryPoint" />
+	</bean>
+
+	<bean id="authenticationEntryPoint"
+		class="org.springframework.security.web.authentication.www.BasicAuthenticationEntryPoint">
+		<property name="realmName" value="Name Of Your Realm" />
+	</bean>
+
+	<beans:bean id="digestFilter"
+		class="org.springframework.security.web.authentication.www.DigestAuthenticationFilter">
+		<beans:property name="userDetailsService" ref="userService2" />
+		<beans:property name="authenticationEntryPoint" ref="digestEntryPoint" />
+	</beans:bean>
+
+	<beans:bean id="digestEntryPoint"
+		class="org.springframework.security.web.authentication.www.DigestAuthenticationEntryPoint">
+		<beans:property name="realmName"
+			value="Contacts Realm via Digest Authentication" />
+		<beans:property name="key" value="acegi" />
+	</beans:bean>
+
+	<authentication-manager>
+		<authentication-provider>
+			<user-service id="userService2">
+				<user name="eparaschiv" password="eparaschiv" authorities="ROLE_ADMIN" />
+				<user name="user" password="user" authorities="ROLE_USER" />
+			</user-service>
+		</authentication-provider>
+	</authentication-manager>
+
+</beans:beans>

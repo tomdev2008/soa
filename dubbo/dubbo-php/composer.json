@@ -1,19 +1,19 @@
 {
-    "name": "max/dubbo-php",
-    "description": "dubbo client for php",
-    "type": "project",
-    "require": {
-        "quickj/dubbo-php-client": "^0.1.0",
-        "monolog/monolog": "1.0.*"
-    },
+    "name": "quickj/dubbo-php-client",
+    "description": "dubbo php client",
     "authors": [
         {
-            "name": "max",
-            "email": "maxkerrer@126.com"
+            "name": "jquick",
+            "email": "314127900@qq.com"
         }
     ],
+    "require": {},
     "minimum-stability": "dev",
     "autoload": {
-        "psr-4": {"Acme\\": "src/"}
+        "psr-4": {
+            "dubbo\\":"src",
+            "dubbo\\invok\\":"src/invok",
+            "dubbo\\protocols\\":"src/invok/protocols"
+        }
     }
 }

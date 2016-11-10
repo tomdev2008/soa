@@ -62,7 +62,7 @@ class Request
            $_debug;
 
     // Template Request object
-    private static $_template,$_zk;
+    private static $_template;
 
     /**
      * We made the constructor private to force the factory style.  This was
@@ -98,69 +98,32 @@ class Request
         self::$_template = clone $template;
     }
     
-    public static function zkserver($host){
-		$zk = new ZKServer($host);
-		self::$_zk = $zk;
-	}
-	
     public static function get($name,$params=array(),$array=true,$httpClient="http"){  
-		
-	   $uri = self::$_zk->getReqUri($name,$params); 
-	   if(!$uri){
-		  return false;   
-	   }
-	   
+	   $uri = Config::getServer($name,$params);
        if($httpClient  == "http"){
-		  return self::init(Http::GET)->uri($uri)->resultFormat($array)->_sendRequest();
+		  return self::init(Http::GET)->uri($uri)->resultFormat($array)->_HttpGet();
 	   }else if($httpClient  == "guzzle"){
 		  return self::init(Http::GET)->uri($uri)->resultFormat($array)->_GuzzleGet();
 	   }        
 	}
 	
 	public static function post($name,$payload){  
-		$uri = self::$_zk->getReqUri($name);
-	    if(!$uri){
-		  return false;   
-	    }
-		return self::init(Http::POST)->uri($uri)->body($payload, "application/json")->_sendRequest();
+		$uri = Config::getServer($name);
+		return self::init(Http::POST)->uri($uri)->body($payload, "application/json")->_httpPost();
 		       
 	}
 	
-	private function _sendRequest(){
-		$status = false;
-		$result = "";
-		try {
-            if($this->method == Http::GET){
-			    $response = $this->_HttpGet(); var_dump($response);
-		    }else if($this->method == Http::POST){
-			    $response = $this->_httpPost();
-		    }
-            $data = $response->body;var_dump($data);
-            if($response->body->code  == '200' || $response->body->code == '201'){
-				$result= (Array) $response->body->entity;
-			}else{
-				$result=$response->body->msg;
-			}
-        } catch (\Httpful\Exception\ConnectionErrorException $e){
-			error_log('不能连接到服务器: ' . $e->getMessage());
-        } catch (\Exception $e) {
-            error_log('请求发生错误: ' . $e->getMessage().$e->getTraceAsString());
-        }
-		
-		#return json_decode(json_encode($response->body), true);
-        return array($status,$result);        
-		
-	}
-	
 	private function _httpPost(){		
-		return $response = \Httpful\Request::post($this->uri)     
-                          ->sendsJson()                       
-                          ->body(json_encode($this->payload)) 
+		return $response = \Httpful\Request::post($this->uri)     // Build a PUT request...
+                          ->sendsJson()                     // tell it we're sending (Content-Type) JSON... // authenticate with basic auth...
+                          ->body(json_encode($this->payload))        // attach a body/payload...
                           ->send();
 	}
 	
 	private  function _HttpGet(){
-		return $response = \Httpful\Request::get($this->uri)->send();
+		$response = \Httpful\Request::get($this->uri)->send();
+		#return json_decode(json_encode($response->body), true);
+        return $this->resultArray ? (Array) $response->body : $response->body;
 	}
 	
 	private function _GuzzleGet(){

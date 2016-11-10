@@ -1,4 +1,3 @@
-dubbx php 客户端使用：
 
 1. 集成dubbox-php到系统库文件
    1). 安装库文件
@@ -6,9 +5,11 @@ dubbx php 客户端使用：
    2). 加载库文件
        /shopnc.php中增加require_once(BASE_CORE_PATH.'/framework/dubbox/bootstrap.php');
 2. 使用
+一、dubbox php 客户端使用：
+
    1). get 主要用于查询,如批量查询或者单一查询，返回值为数组
-       $result = \dubbo\Request::get("Order.Hello");  //无参数， “Order.Hello”为预定义标签，标签代表请求服务的名称（详见Config.php）,(下同)
-       $result = \dubbox\Request::get("Order.Brand.ID".array("id"=>4));  //有参数
+       list($status,$result) = \dubbo\Request::get("Order.Hello");  //无参数， “Order.Hello”为预定义标签，标签代表请求服务的名称（详见Config.php）,(下同)
+       list($status,$result) = \dubbox\Request::get("Order.Brand.ID".array("id"=>4));  //有参数
         
    2). post 主要用于数据的insert,update,delete，返回值为数组
        //插入一条数据
@@ -20,5 +21,30 @@ dubbx php 客户端使用：
 			"telNumber" => "125604",
 			"remark"    => $uuid
 	   );
-      $result = \dubbox\Request::post("Order.Insert",$brand);
-     
+      list($status,$result) = \dubbox\Request::post("Order.Insert",$brand);
+
+   3). 关于返回结果：list($status,$result)
+      <1> 如果$status=true，那么返回结果是正确的，返回的数据在$result里（包括分页数据条目）
+      <2> 如果$status=false,那么调用过程可能发生了错误，错误信息在$result
+         1-  系统错误，$result可能为空，这时调用程序应给出自定义错误，如“系统发生错误”或将结果显示为空
+         2-  参数或其他格式错误，$result将携带这种错误信息
+
+二、文件系统使用
+   1.安装fastdfs php 扩展
+      git clone https://github.com/happyfish100/fastdfs.git
+      cd fastdfs/php_client
+      phpize
+      ./configure
+      make 
+      make install
+
+      cp modules/fastdfs_client.so  /usr/lib/php/20060613/
+
+      cp fastdfs_client.ini /etc/php/
+      (修改fastdfs_client.ini中fastdfs_client.tracker_group0的client.conf 的存放位置)
+   2.调用
+      $result = \WFFile\Client::upload(__DIR__."/test.jpg");
+
+      关于$result:【只有true或false，无其他错误信息返回】
+        1- true 文件上传成功
+        2- false 文件上传失败

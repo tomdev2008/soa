@@ -1,12 +1,8 @@
 <?php
 
-require __DIR__ . '/../vendor/autoload.php';
+require "bootstrap.php";
 
-require "config.php";
-
-
-
-
+\dubbox\Request::zkserver("localhost:2181");
 $delete = array("id" => "7");
-$result = \dubboxphp\Request::post(OrderBrandDelete,$delete);
-var_dump($result->body);
+list($status,$result) = \dubbox\Request::get("Order.Demo");
+var_dump($status,$result);

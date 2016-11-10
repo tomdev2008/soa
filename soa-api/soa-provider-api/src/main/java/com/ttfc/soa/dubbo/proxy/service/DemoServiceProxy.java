@@ -15,10 +15,13 @@
  */
 package com.ttfc.soa.dubbo.proxy.service;
 
-import com.ttfc.soa.dubbo.proxy.domain.Hello;
+import javax.ws.rs.core.Response;
+
+import com.ttfc.soa.dubbo.proxy.domain.WResult;
+import com.ttfc.soa.dubbo.proxy.domain.WResponse;
 
 public interface DemoServiceProxy {
 
-	Hello getHello(String name);
+	WResult getHello(String name);
 
 }
