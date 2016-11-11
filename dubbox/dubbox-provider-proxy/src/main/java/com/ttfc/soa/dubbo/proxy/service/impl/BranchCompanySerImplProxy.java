@@ -2,29 +2,18 @@ package com.ttfc.soa.dubbo.proxy.service.impl;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
-
-import javax.annotation.Resource;
-
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.alibaba.dubbo.demo.user.facade.RegistrationResult;
-import com.alibaba.dubbo.rpc.RpcContext;
-import com.alibaba.dubbo.rpc.RpcContext;
 import com.alibaba.dubbo.rpc.protocol.rest.support.ContentType;
 import com.ttfc.soa.dubbo.provider.domain.BranchCompany;
+import com.ttfc.soa.dubbo.provider.domain.PageResult;
 import com.ttfc.soa.dubbo.provider.service.BranchCompanyService;
 import com.ttfc.soa.dubbo.proxy.domain.WResponse;
 import com.ttfc.soa.dubbo.proxy.domain.WResult;
 import com.ttfc.soa.dubbo.proxy.service.BranchCompanyServiceProxy;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -49,8 +38,7 @@ public class BranchCompanySerImplProxy implements BranchCompanyServiceProxy {
 	@Override
 	@GET
 	public WResult getLast() {
-		List<BranchCompany> lbrans = (List<BranchCompany>) branService.getBranchCompanys();
-		
+		PageResult<BranchCompany> lbrans = (PageResult<BranchCompany>) branService.selectBraComs();
 		return WResponse.success(WResponse.Action.ACCEPTED).entity(lbrans).build();
 	}
 
@@ -117,4 +105,6 @@ public class BranchCompanySerImplProxy implements BranchCompanyServiceProxy {
 		return WResponse.success(WResponse.Action.ACCEPTED).entity(Long.valueOf(res)).build();
 	}
 
+	
 }
+

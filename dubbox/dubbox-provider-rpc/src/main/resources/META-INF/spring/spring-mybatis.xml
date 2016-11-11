@@ -69,8 +69,7 @@
 
 		<property name="mapperLocations" value="classpath:com/ttfc/soa/dubbo/provider/mapper/*.xml" />
 		<property name="typeAliasesPackage" value="com.ttfc.soa.dubbo.provider.domain" />
-		<!-- <property name="configLocation" value="classpath:mybatis-configure.xml" 
-			/> -->
+		<property name="configLocation" value="classpath:mybatis-config.xml" /> 
 	</bean>
 
 	<!-- 配置 扫描器 -->

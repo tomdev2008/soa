@@ -12,4 +12,5 @@ public interface BranchCompanyMapper {
 	BranchCompany selectBranchCompany(int id);
 
 	public List<BranchCompany> getBraComsFromDataBase();
+	public List<BranchCompany> selectBraComs();
 }

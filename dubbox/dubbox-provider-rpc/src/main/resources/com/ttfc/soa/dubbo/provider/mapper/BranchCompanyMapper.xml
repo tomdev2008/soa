@@ -74,4 +74,14 @@
 		BranchCompany
 		where id = #{id}
 	</delete>
+	
+	<select id="selectBraComs2" resultType="com.ttfc.soa.dubbo.provider.domain.BranchCompany">
+		select * from
+		BranchCompany
+	</select>
+	
+	<select id="selectBraComs" resultType="com.ttfc.soa.dubbo.provider.domain.BranchCompany">
+		select * from
+		BranchCompany
+	</select>
 </mapper> 

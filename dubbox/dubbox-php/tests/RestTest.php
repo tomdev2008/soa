@@ -10,8 +10,8 @@ class RestTest extends TestCase
 		$result = \dubbox\Request::get("Order.Hello");
         var_dump($result['result']);
 
-        $result = \dubbox\Request::get("Order.Brand.ID".array("id"=>4));
-        var_dump($result);
+        $result = \dubbox\Request::get("Order.Brand.ID", array("entity"=>array("name"=>"sfasfd","regin"=>""),"page"=>array("size"=>5,"ppage"=>1)));
+        var_dump($result);  array("name"=>"max","age"=>"<=10", ","pagesize"=>10,"pagecur"=>1,"pageoff"=>20,"order"=>"asc","orderby"=>"age");
 
         $result = \dubbox\Request::get("Order.Brand");
         var_dump($result['moduleNo']);

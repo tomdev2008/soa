@@ -107,7 +107,7 @@
 	<dubbo:reference id="demoService"
 		interface="com.ttfc.soa.dubbo.provider.service.DemoService" protocol="dubbo" />
 	<dubbo:service interface="com.ttfc.soa.dubbo.proxy.service.DemoServiceProxy"
-		ref="demoServiceProxy" protocol="rest" />
+		ref="demoServiceProxy" protocol="rest"  />
 	<!-- end of test for mys -->
 
 

@@ -15,13 +15,6 @@
  */
 package com.ttfc.soa.dubbo.proxy.domain;
 
-import org.codehaus.jackson.annotate.JsonProperty;
-
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import java.io.Serializable;
-
 /**
  * @author lishen
  */
