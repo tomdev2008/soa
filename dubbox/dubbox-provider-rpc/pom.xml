@@ -26,6 +26,14 @@
 		<mybatis-ehcache.version>1.0.0</mybatis-ehcache.version>
 		<mybatis-spring.version>1.3.0</mybatis-spring.version>
 	</properties>
+	<repositories>
+		<repository>
+			<id>jcenter</id>
+			<name>bintray</name>
+			<url>http://jcenter.bintray.com</url>
+		</repository>
+	</repositories>
+
 	<dependencies>
 		<dependency>
 			<groupId>com.max.api</groupId>
@@ -251,6 +259,18 @@
 			<groupId>com.github.jsqlparser</groupId>
 			<artifactId>jsqlparser</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${spring.bom.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>6.9.12</version>
+			<scope>test</scope>
+		</dependency>
+
 		<!-- end of mys -->
 
 	</dependencies>
@@ -331,6 +351,10 @@
 				<configuration>
 					<path>/services</path>
 					<port>8080</port>
+					<url>http://localhost:8080/manager/text</url>
+					<username>tomcat</username>
+					<password>tomcat</password>
+					<update>true</update>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -344,7 +368,7 @@
 					</webApp>
 					<httpConnector>
 						<!--host>localhost</host -->
-						<port>8080</port>
+						<port>8088</port>
 					</httpConnector>
 				</configuration>
 			</plugin>

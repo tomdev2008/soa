@@ -87,6 +87,6 @@
         <property name="userService" ref="userService"/>
     </bean>
     -->
-    <dubbo:service interface="com.ttfc.soa.dubbo.provider.service.DemoService"	ref="demoService" protocol="dubbo" />
+    <dubbo:service interface="com.ttfc.soa.dubbo.provider.service.DemoService"	ref="demoService" protocol="dubbo" retries="0" timeout="5000"/>
 	<dubbo:service interface="com.ttfc.soa.dubbo.provider.service.BranchCompanyService" ref="braComService" protocol="dubbo" />
 </beans>
