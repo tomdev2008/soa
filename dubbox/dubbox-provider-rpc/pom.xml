@@ -38,7 +38,7 @@
 		<dependency>
 			<groupId>com.max.api</groupId>
 			<artifactId>soa-provider-api</artifactId>
-			<version>${api.provider.version}</version>
+			<version>1.0.0-20161202.092832-1</version>
 		</dependency>
 		<dependency>
 			<groupId>com.alibaba</groupId>
@@ -270,6 +270,7 @@
 			<version>4.10</version>
 			<scope>test</scope>
 		</dependency>
+		<!-- 浏览器内部自动测试 -->
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
@@ -357,7 +358,7 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
-			<!-- generate a javasource -->
+			<!-- java doc and source -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
@@ -366,12 +367,11 @@
 					<execution>
 						<id>attach-sources</id>
 						<goals>
-							<goal>jar</goal>
+							<goal>jar-no-fork</goal>
 						</goals>
 					</execution>
 				</executions>
 			</plugin>
-			<!-- generate a javadoc -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
@@ -385,6 +385,8 @@
 					</execution>
 				</executions>
 			</plugin>
+			<!-- java doc and source -->
+
 
 			<!-- For Maven Tomcat Plugin -->
 			<plugin>
@@ -440,7 +442,7 @@
 					</execution>
 				</executions>
 			</plugin>
-			<!--  deploy  -->
+			<!-- deploy -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-deploy-plugin</artifactId>
@@ -468,7 +470,7 @@
 					<skipStaging>true</skipStaging>
 				</configuration>
 			</plugin>
-			<!--  deploy  -->
+			<!-- deploy -->
 		</plugins>
 	</build>
 
