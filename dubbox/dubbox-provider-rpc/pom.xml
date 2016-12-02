@@ -38,7 +38,7 @@
 		<dependency>
 			<groupId>com.max.api</groupId>
 			<artifactId>soa-provider-api</artifactId>
-			<version>1.0.0-20161202.092832-1</version>
+			<version>1.0.0-20161202.094107-6</version>
 		</dependency>
 		<dependency>
 			<groupId>com.alibaba</groupId>
