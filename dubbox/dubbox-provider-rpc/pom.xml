@@ -39,7 +39,7 @@
 		<dependency>
 			<groupId>com.max.api</groupId>
 			<artifactId>soa-provider-api</artifactId>
-			<version>1.0.0-20161202.101253-1</version>
+			<version>${api.provider.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.alibaba</groupId>
