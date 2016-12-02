@@ -33,9 +33,6 @@ import com.ttfc.soa.dubbo.proxy.service.DemoServiceProxy;
 
 
 @Service("demoServiceProxy")
-@Path("hello")
-@Consumes({ MediaType.APPLICATION_JSON, MediaType.TEXT_XML })
-@Produces({ ContentType.APPLICATION_JSON_UTF_8, ContentType.TEXT_XML_UTF_8 })
 public class DemoServiceImplProxy implements DemoServiceProxy {
 
 	@Autowired
@@ -46,12 +43,10 @@ public class DemoServiceImplProxy implements DemoServiceProxy {
 	}
 
 	@Override
-	@GET
-	@Path("{name}")
-	public WResult getHello(@PathParam("name") String name) {
+	public WResult getHello(String name) {
 		String result = demoService.sayHello(name);
         
-		return WResponse.success(WResponse.Action.ACCEPTED).entity(result).build();
+		return WResponse.success(WResponse.Action.ACCEPTED).entity(result+":proxy").build();
 		//return WResponse.fail(WResponse.Action.BAD_REQUEST).msg("erro happend").build();
 	}
 

@@ -23,9 +23,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 @Service("braComServiceProxy")
-@Path("bran")
-@Consumes({ MediaType.APPLICATION_JSON, MediaType.TEXT_XML })
-@Produces({ ContentType.APPLICATION_JSON_UTF_8, ContentType.TEXT_XML_UTF_8 })
 public class BranchCompanySerImplProxy implements BranchCompanyServiceProxy {
 
 	@Autowired
@@ -36,32 +33,24 @@ public class BranchCompanySerImplProxy implements BranchCompanyServiceProxy {
 	}
 
 	@Override
-	@GET
 	public WResult getLast() {
 		PageResult<BranchCompany> lbrans = (PageResult<BranchCompany>) branService.selectBraComs();
 		return WResponse.success(WResponse.Action.ACCEPTED).entity(lbrans).build();
 	}
 
 	@Override
-	@GET
-	@Path("{id : \\d+}")
-	public WResult getBranchCompany(
-			@PathParam("id") int id/* , @Context HttpServletRequest request */) {
+	public WResult getBranchCompany(int id/* , @Context HttpServletRequest request */) {
 		BranchCompany fbran = (BranchCompany) branService.getBranchCompanyById(id);
 		return WResponse.success(WResponse.Action.ACCEPTED).entity(fbran).build();
 	}
 
-	@Override
-	@POST
-	@Path("register")
+	@Override	
 	public WResult registerBranchCompany(BranchCompany brand) {
 		int res = branService.saveBranchCompany(brand);		
 		return WResponse.success(WResponse.Action.ACCEPTED).entity(Long.valueOf(res)).build();
 	}
 
-	@Override
-	@POST
-	@Path("update")
+	@Override	
 	public WResult updateBranchCompany(HashMap<String, String> data) {
 		int id = Integer.valueOf(data.get("id"));
 		BranchCompany brandduty = (BranchCompany) branService.getBranchCompanyById(id);		
@@ -95,9 +84,7 @@ public class BranchCompanySerImplProxy implements BranchCompanyServiceProxy {
 		return WResponse.success(WResponse.Action.ACCEPTED).entity(Long.valueOf(res)).build();
 	}
 
-	@Override
-	@POST
-	@Path("delete")
+	@Override	
 	public WResult deleteBranchCompany(HashMap<String, String> data) {
 		int id = Integer.valueOf(data.get("id"));
 		BranchCompany brand = branService.getBranchCompanyById(id);

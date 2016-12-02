@@ -58,10 +58,10 @@
 	<!-- <dubbo:protocol name="rest" port="8888" contextpath="services" server="jetty" 
 		extension="com.ttfc.dubbo.proxy.filter.CacheControlFilter,com.ttfc.dubbo.proxy.filter.DigestAuthenticationFilter" 
 		/> -->
-	<dubbo:protocol name="rest" port="8888" contextpath="services" server="jetty" />
+	<!-- <dubbo:protocol name="rest" port="8888" contextpath="services" server="jetty" /> -->
 	<!-- use the external tomcat or other server with the servlet approach; 
 		the port and contextpath must be exactly the same as those in external server -->
-	<!-- <dubbo:protocol name="rest" port="8888" contextpath="services" server="servlet"/> -->
+	<dubbo:protocol name="rest" port="8080" contextpath="dubbox-provider-proxy" server="servlet"/>
 
 	<dubbo:protocol name="http" port="8889" />
 	<dubbo:protocol name="hessian" port="8890" />

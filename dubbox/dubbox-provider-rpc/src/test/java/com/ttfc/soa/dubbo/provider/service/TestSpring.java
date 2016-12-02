@@ -1,5 +1,7 @@
 package com.ttfc.soa.dubbo.provider.service;
 
+import org.testng.annotations.Test;
+import org.testng.AssertJUnit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
@@ -21,7 +23,7 @@ public class TestSpring extends AbstractTestNGSpringContextTests {
 		System.out.println(res);
 
 		Assert.assertNotNull(res);
-		Assert.assertTrue(res.startsWith("Hello maxkerrer"));
+		AssertJUnit.assertTrue(res.startsWith("Hello maxkerrer"));
 
 
 	}

@@ -15,13 +15,22 @@
  */
 package com.ttfc.soa.dubbo.proxy.service;
 
-import javax.ws.rs.core.Response;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 import com.ttfc.soa.dubbo.proxy.domain.WResult;
-import com.ttfc.soa.dubbo.proxy.domain.WResponse;
+import com.alibaba.dubbo.rpc.protocol.rest.support.ContentType;
 
-public interface DemoServiceProxy {
-
-	WResult getHello(String name);
-
+@Path("hello")
+@Consumes({ MediaType.APPLICATION_JSON, MediaType.TEXT_XML })
+@Produces({ ContentType.APPLICATION_JSON_UTF_8, ContentType.TEXT_XML_UTF_8 })
+public interface DemoServiceProxy {	
+	@GET
+	@Path("{name}")
+	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+	WResult getHello(@PathParam("name") String name);
 }
