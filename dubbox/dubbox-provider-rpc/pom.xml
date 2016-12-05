@@ -470,7 +470,7 @@
 					<skipStaging>true</skipStaging>
 				</configuration>
 			</plugin>
-			<!-- deploy -->
+			<!-- deploy -->			
 		</plugins>
 	</build>
 

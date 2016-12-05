@@ -24,7 +24,7 @@
 	<modules>
 		<module>soa-provider-api</module>
 	</modules>
-<distributionManagement>
+	<distributionManagement>
 		<repository>
 			<id>nexus</id>
 			<name>Releases</name>

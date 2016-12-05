@@ -28,7 +28,7 @@ class SProxy
 		 return false;  
 	  }
 	  $uri = self::$SERVERS[$name];
-	  if(empty($params)){
+	  if(!empty($params)){
 		  $uri = str_replace(array_keys($params), array_values($params), $uri);
 	  }
 	  return self::HOST . $uri;
