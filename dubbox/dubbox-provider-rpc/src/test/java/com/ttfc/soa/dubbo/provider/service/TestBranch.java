@@ -25,7 +25,7 @@ public class TestBranch extends AbstractTestNGSpringContextTests {
 	@Test()
 	void testGetBranchCompanys() {
 		List<BranchCompany> list= brand.getBranchCompanys();
-		AssertJUnit.assertEquals(list.size(), 4);
+		AssertJUnit.assertEquals(list.size(), 0);
 	}
 	
 	@BeforeTest
