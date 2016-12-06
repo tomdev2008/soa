@@ -11,7 +11,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.max.soa</groupId>
-		<artifactId>soa-api-parent</artifactId>
+		<artifactId>soa-parent</artifactId>
 		<version>1.0.0</version>
 	</parent>
 	<artifactId>soa-provider-api</artifactId>

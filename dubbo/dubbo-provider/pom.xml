@@ -20,7 +20,7 @@
 	</properties>
 	<dependencies>
 		<dependency>
-			<groupId>com.max.api</groupId>
+			<groupId>com.max.soa</groupId>
 			<artifactId>soa-provider-api</artifactId>
 			<version>${api.provider.version}</version>
 		</dependency>
