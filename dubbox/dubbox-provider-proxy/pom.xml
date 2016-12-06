@@ -28,6 +28,12 @@
 			<groupId>com.max.soa</groupId>
 			<artifactId>soa-provider-api</artifactId>
 			<version>${api.provider.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>com.max.soa</groupId>
+					<artifactId>soa-parent</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>com.alibaba</groupId>
