@@ -73,7 +73,7 @@
 	<properties>
 		<!-- Common libs -->
 		<!-- mys  -->
-		<dubbo.version>2.5.4-SNAPSHOT</dubbo.version>
+		<dubbo.version>2.5.3</dubbo.version>
 		<api.provider.version>1.0.0</api.provider.version>
         <!-- end of mys  -->
 		<spring_version>3.2.16.RELEASE</spring_version>

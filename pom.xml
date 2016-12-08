@@ -35,6 +35,17 @@
 		<module>dubbo</module>
 		<module>dubbox</module>		
 	</modules>
-	
+	<distributionManagement>
+		<repository>
+			<id>nexus</id>
+			<name>Releases</name>
+			<url>http://localhost:2525/repository/maven-releases</url>
+		</repository>
+		<snapshotRepository>
+			<id>nexus</id>
+			<name>Snapshot</name>
+			<url>http://localhost:2525/repository/maven-snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
 
 </project>
